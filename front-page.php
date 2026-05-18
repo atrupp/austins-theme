@@ -116,22 +116,25 @@
 
 <!-- GALLERY CTA -->
 <div class="gallery-cta reveal">
-  <div>
+  <div class="gallery-cta-text">
     <div class="gallery-cta-eyebrow">◆ THE FULL COLLECTION</div>
     <h2 class="gallery-cta-headline">THERE'S<br><em>More</em><br>WHERE THAT<br>CAME FROM.</h2>
     <p class="gallery-cta-sub">Every project tells a story. Come see the rest of the work.</p>
   </div>
-  <a href="<?php echo esc_url( get_permalink( get_page_by_path('work') ) ); ?>" class="gallery-btn">
-    ENTER<br>GALLERY<br>→
-  </a>
 
-  <a href="<?php echo esc_url( get_permalink( get_page_by_path('photo') ) ); ?>" class="gallery-btn">
-    ENTER<br>PHOTO GALLERY<br>→
-  </a>
+  <div class="gallery-cta-buttons">
+    <a href="<?php echo esc_url( get_permalink( get_page_by_path('work') ) ); ?>" class="gallery-btn">
+      ENTER<br>GALLERY<br>→
+    </a>
 
-  <a href="<?php echo esc_url( get_permalink( get_page_by_path('blog') ) ); ?>" class="gallery-btn">
-    ENTER<br>BLOG<br>→
-  </a>
+    <a href="<?php echo esc_url( get_permalink( get_page_by_path('photo') ) ); ?>" class="gallery-btn">
+      ENTER<br>PHOTO GALLERY<br>→
+    </a>
+
+    <a href="<?php echo esc_url( get_permalink( get_page_by_path('blog') ) ); ?>" class="gallery-btn">
+      ENTER<br>BLOG<br>→
+    </a>
+  </div>
 </div>
 
 <?php get_footer(); ?>
