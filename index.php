@@ -15,8 +15,9 @@
 get_header();
 ?>
 
-	<main id="primary" class="site-main">
-
+	<main id="primary" class="site-main container">
+		<div class="row">
+	<div class="col-8">
 		<?php
 		if ( have_posts() ) :
 
@@ -50,6 +51,8 @@ get_header();
 		endif;
 		?>
 
+	</div>
+	</div>
 	</main><!-- #main -->
 
 <?php
