@@ -4,7 +4,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@300;400;500&display=swap');
 
 :root {
-  --ink: #0d0d0d;
+  --ink: #494e5e;
   --paper: #f2efe8;
   --accent: #ff3c2e;
   --mid: #8a8680;
@@ -520,7 +520,6 @@ body::after {
   </div>
 
   <div class="hero-main">
-    <div class="hero-eyebrow reveal">◆ AVAILABLE FOR PROJECTS</div>
     <h1 class="hero-headline reveal" style="transition-delay:0.1s">
       DESIGN<br>THAT <em>hits</em><br>DIFFERENT.
     </h1>
@@ -538,7 +537,7 @@ body::after {
       <div class="hero-stats">
         <div class="hero-stat">
           <span class="hero-stat-num" data-count="12">0</span>
-          <span class="hero-stat-label">PROJECTS SHIPPED</span>
+          <span class="hero-stat-label">PROJECTS</span>
         </div>
         <div class="hero-stat">
           <span class="hero-stat-num" data-count="3">0</span>
@@ -559,20 +558,7 @@ body::after {
   </div>
 </section>
 
-<!-- MARQUEE -->
-<div class="marquee-wrap">
-  <div class="marquee-track">
-    <?php
-    $items = ['WEB DESIGN', '◆', 'WORDPRESS', '◆', 'BOOTSTRAP', '◆', 'UI/UX', '◆', 'BRANDING', '◆', 'DEVELOPMENT', '◆', 'COLORADO', '◆'];
-    for ($i = 0; $i < 4; $i++) {
-      foreach ($items as $idx => $item) {
-        $class = $item === '◆' ? 'marquee-item red' : 'marquee-item';
-        echo '<span class="' . $class . '">' . esc_html($item) . '</span>';
-      }
-    }
-    ?>
-  </div>
-</div>
+
 
 <!-- WORK -->
 <section class="work-section">
