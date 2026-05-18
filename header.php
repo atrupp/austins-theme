@@ -26,35 +26,27 @@
 	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'austins-theme' ); ?></a>
 
 	<header id="masthead" class="site-header">
-		<div class="site-branding">
-			<?php
-			the_custom_logo();
-			if ( is_front_page() && is_home() ) :
-				?>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-				<?php
-			else :
-				?>
-				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-				<?php
-			endif;
-			$austins_theme_description = get_bloginfo( 'description', 'display' );
-			if ( $austins_theme_description || is_customize_preview() ) :
-				?>
-				<p class="site-description"><?php echo $austins_theme_description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
-			<?php endif; ?>
-		</div><!-- .site-branding -->
-
 		<nav id="site-navigation" class="main-navigation navbar navbar-expand-lg bg-body-tertiary">
-			<div class="container-fluid">
-			<button class="menu-toggle navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'austins-theme' ); ?><span class="navbar-toggler-icon"></span></button>
-			<?php
-			wp_nav_menu(
-				array(
-					'theme_location' => 'menu-1',
-					'menu_id'        => 'primary-menu',
-				)
-			);
-			?>
-		</nav><!-- #site-navigation -->
+    <div class="container-fluid">
+        <a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>">
+            <?php bloginfo( 'name' ); ?>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <?php
+            wp_nav_menu(
+                array(
+                    'theme_location' => 'menu-1',
+                    'menu_id'        => 'primary-menu',
+                    'menu_class'     => 'navbar-nav',
+                    'container'      => false,
+                    'fallback_cb'    => false,
+                )
+            );
+            ?>
+        </div>
+    </div>
+</nav>
 	</header><!-- #masthead -->
