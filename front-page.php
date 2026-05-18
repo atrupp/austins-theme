@@ -124,6 +124,14 @@
   <a href="<?php echo esc_url( get_permalink( get_page_by_path('work') ) ); ?>" class="gallery-btn">
     ENTER<br>GALLERY<br>→
   </a>
+
+  <a href="<?php echo esc_url( get_permalink( get_page_by_path('photo') ) ); ?>" class="gallery-btn">
+    ENTER<br>PHOTO GALLERY<br>→
+  </a>
+
+  <a href="<?php echo esc_url( get_permalink( get_page_by_path('blog') ) ); ?>" class="gallery-btn">
+    ENTER<br>BLOG<br>→
+  </a>
 </div>
 
 <?php get_footer(); ?>
