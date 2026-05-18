@@ -27,7 +27,7 @@
 
 	<header id="masthead" class="site-header">
 		<nav id="site-navigation" class="main-navigation navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container-fluid">
+    <div class="container">
         <a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>">
             <?php bloginfo( 'name' ); ?>
         </a>
