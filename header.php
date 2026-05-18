@@ -45,8 +45,9 @@
 			<?php endif; ?>
 		</div><!-- .site-branding -->
 
-		<nav id="site-navigation" class="main-navigation">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'austins-theme' ); ?></button>
+		<nav id="site-navigation" class="main-navigation navbar navbar-expand-lg bg-body-tertiary">
+			<div class="container-fluid">
+			<button class="menu-toggle navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'austins-theme' ); ?><span class="navbar-toggler-icon"></span></button>
 			<?php
 			wp_nav_menu(
 				array(
