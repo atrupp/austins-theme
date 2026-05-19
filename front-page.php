@@ -20,12 +20,7 @@
     <div class="hero-model" id="hero-model-wrap">
       <canvas id="model-canvas"></canvas>
       <div class="model-scanlines"></div>
-      <div class="model-brackets">
-        <div class="model-bracket tl"></div>
-        <div class="model-bracket tr"></div>
-        <div class="model-bracket bl"></div>
-        <div class="model-bracket br"></div>
-      </div>
+
       <div class="model-mode-toggle">
         <button class="model-mode-btn active" data-mode="wire">Wire</button>
         <button class="model-mode-btn" data-mode="solid">Solid</button>
@@ -69,24 +64,20 @@
 <!-- 3D MODEL STYLES -->
 <style>
 .hero-model {
-  grid-area: model;
-  align-self: center;
-  justify-self: center;
-  position: relative;
-  width: 420px;
-  height: 420px;
+  position: absolute;
+  right: -120px;
+  top: 50%;
+  transform: translateY(-42%);
+  width: 620px;
+  height: 620px;
+  z-index: 1;
 }
 #model-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; border-radius: 50%; }
 .model-scanlines {
   position: absolute; inset: 0; pointer-events: none; z-index: 2; border-radius: 50%; overflow: hidden;
   background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,212,255,0.012) 2px, rgba(0,212,255,0.012) 4px);
 }
-.model-brackets { position: absolute; inset: -12px; pointer-events: none; z-index: 3; }
-.model-bracket { position: absolute; width: 24px; height: 24px; border-color: #00d4ff; border-style: solid; opacity: 0.45; }
-.model-bracket.tl { top:0; left:0;   border-width: 1px 0 0 1px; }
-.model-bracket.tr { top:0; right:0;  border-width: 1px 1px 0 0; }
-.model-bracket.bl { bottom:0; left:0;  border-width: 0 0 1px 1px; }
-.model-bracket.br { bottom:0; right:0; border-width: 0 1px 1px 0; }
+
 .model-mode-toggle {
   position: absolute; bottom: -44px; left: 50%; transform: translateX(-50%);
   z-index: 10; display: flex; border: 1px solid rgba(0,212,255,0.25);
@@ -118,7 +109,17 @@
   letter-spacing: 0.2em; text-transform: uppercase; color: rgba(0,212,255,0.6);
 }
 @media (max-width: 900px) {
-  .hero-model { width: 280px; height: 280px; margin: 2rem auto 0; }
+  .hero-model {
+    position: relative;
+    right: auto;
+    top: auto;
+    transform: none;
+    z-index: auto;
+    width: 280px;
+    height: 280px;
+    grid-area: model;
+    margin: 2rem auto 0;
+  }
 }
 @media (max-width: 480px) {
   .hero-model { width: 220px; height: 220px; }
