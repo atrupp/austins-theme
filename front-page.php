@@ -67,7 +67,7 @@
   position: absolute;
   right: -200px;
   top: 50%;
-  transform: translateY(-38%);
+  transform: translateY(-58%);
   width: 1000px;
   height: 1000px;
   z-index: 1;
