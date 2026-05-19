@@ -1446,7 +1446,7 @@ body::after,
 .reveal {
   opacity: 0;
   transform: translateY(24px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
 .reveal.visible {
@@ -1547,8 +1547,9 @@ body::after,
 }
 
 .single-content {
-  max-width: 740px;
-  font-family: 'Instrument Serif', serif;
+  max-width: 900px;
+  margin: 0 auto;
+  font-family: Georgia, serif;
   font-size: 1.2rem;
   line-height: 1.8;
   color: var(--ink);
@@ -1589,6 +1590,22 @@ body::after,
   height: auto;
   display: block;
   margin: 2.5rem 0;
+}
+
+/* Full-bleed: set alignment to "Full Width" in the WP block editor */
+.single-content .alignfull,
+.single-content .alignfull img {
+  width: 100vw;
+  max-width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+
+/* Right-side: set alignment to "Align Right" in the WP editor */
+.single-content .alignright {
+  float: right;
+  max-width: 45%;
+  margin: 0.5rem 0 1.5rem 2.5rem;
 }
 
 .single-content hr {
