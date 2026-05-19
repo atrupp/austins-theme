@@ -130,7 +130,7 @@
 <section class="work-section">
   <div class="work-header reveal">
     <h2 class="work-title">SELECTED<br><em>Work</em></h2>
-    <a href="<?php echo esc_url( get_permalink( get_page_by_path('work') ) ); ?>" class="work-link">ALL PROJECTS</a>
+    <a href="<?php echo esc_url( get_permalink( get_page_by_path('projects') ) ); ?>" class="work-link">ALL PROJECTS</a>
   </div>
 
   <div class="projects-grid">
@@ -194,7 +194,7 @@
   </div>
   <div class="gallery-cta-buttons">
     <a href="<?php echo esc_url( get_permalink( get_page_by_path('projects') ) ); ?>" class="gallery-btn">ENTER<br>GALLERY<br>→</a>
-    <a href="<?php echo esc_url( get_permalink( get_page_by_path('photo') ) ); ?>" class="gallery-btn">ENTER<br>PHOTO GALLERY<br>→</a>
+    <a href="<?php echo esc_url( get_permalink( get_page_by_path('gallery') ) ); ?>" class="gallery-btn">ENTER<br>PHOTO GALLERY<br>→</a>
     <a href="<?php echo esc_url( get_permalink( get_page_by_path('blog') ) ); ?>" class="gallery-btn">ENTER<br>BLOG<br>→</a>
   </div>
 </div>
