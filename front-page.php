@@ -17,9 +17,24 @@
       DESIGN<br>THAT <em>hits</em><br>DIFFERENT.
     </h1>
 
-    <div class="hero-blob" id="heroBlob">
-      <div class="hero-blob-ring"></div>
-      <div class="hero-blob-text">VIEW<br>MY WORK</div>
+    <div class="hero-model" id="hero-model-wrap">
+      <canvas id="model-canvas"></canvas>
+      <div class="model-scanlines"></div>
+      <div class="model-brackets">
+        <div class="model-bracket tl"></div>
+        <div class="model-bracket tr"></div>
+        <div class="model-bracket bl"></div>
+        <div class="model-bracket br"></div>
+      </div>
+      <div class="model-mode-toggle">
+        <button class="model-mode-btn active" data-mode="wire">Wire</button>
+        <button class="model-mode-btn" data-mode="solid">Solid</button>
+        <button class="model-mode-btn" data-mode="xray">X-Ray</button>
+      </div>
+      <div id="model-loading">
+        <div class="model-load-ring"></div>
+        <div class="model-load-text">Scanning</div>
+      </div>
     </div>
 
     <div class="hero-sub reveal" style="transition-delay:0.2s">
@@ -51,126 +66,59 @@
 </section>
 
 
-<!-- 3D MODEL SECTION -->
+<!-- 3D MODEL STYLES -->
 <style>
-.model-section { position: relative; background: #0a0a0a; }
-.model-scroll-stage { height: 280vh; position: relative; }
-.model-sticky {
-  position: sticky; top: 0; height: 100vh; width: 100%;
-  display: flex; align-items: center; justify-content: center; overflow: hidden;
+.hero-model {
+  position: relative;
+  width: 420px;
+  height: 420px;
+  flex-shrink: 0;
 }
-#model-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+#model-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; border-radius: 50%; }
 .model-scanlines {
-  position: absolute; inset: 0; pointer-events: none; z-index: 2;
+  position: absolute; inset: 0; pointer-events: none; z-index: 2; border-radius: 50%; overflow: hidden;
   background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,212,255,0.012) 2px, rgba(0,212,255,0.012) 4px);
 }
-.model-brackets { position: absolute; inset: 40px; pointer-events: none; z-index: 3; }
-.model-bracket { position: absolute; width: 32px; height: 32px; border-color: #00d4ff; border-style: solid; opacity: 0.35; }
+.model-brackets { position: absolute; inset: -12px; pointer-events: none; z-index: 3; }
+.model-bracket { position: absolute; width: 24px; height: 24px; border-color: #00d4ff; border-style: solid; opacity: 0.45; }
 .model-bracket.tl { top:0; left:0;   border-width: 1px 0 0 1px; }
 .model-bracket.tr { top:0; right:0;  border-width: 1px 1px 0 0; }
 .model-bracket.bl { bottom:0; left:0;  border-width: 0 0 1px 1px; }
 .model-bracket.br { bottom:0; right:0; border-width: 0 1px 1px 0; }
-.model-hud {
-  position: absolute; z-index: 4; pointer-events: none;
-  font-family: 'DM Sans', sans-serif; font-size: 0.62rem;
-  letter-spacing: 0.18em; text-transform: uppercase; line-height: 1.9;
-}
-.model-hud-tl { top:48px; left:56px; color: rgba(0,212,255,0.55); }
-.model-hud-tr { top:48px; right:56px; text-align:right; color: rgba(0,212,255,0.55); }
-.model-hud-bl { bottom:48px; left:56px; color: rgba(232,228,220,0.35); }
-.model-hud-br { bottom:48px; right:56px; text-align:right; color: rgba(232,228,220,0.35); }
 .model-mode-toggle {
-  position: absolute; top: 48px; left: 50%; transform: translateX(-50%);
+  position: absolute; bottom: -44px; left: 50%; transform: translateX(-50%);
   z-index: 10; display: flex; border: 1px solid rgba(0,212,255,0.25);
   border-radius: 100px; overflow: hidden;
   backdrop-filter: blur(10px); background: rgba(10,10,10,0.6);
+  white-space: nowrap;
 }
 .model-mode-btn {
   background: transparent; border: none; color: rgba(232,228,220,0.35);
-  font-family: 'DM Sans', sans-serif; font-size: 0.65rem;
-  letter-spacing: 0.14em; text-transform: uppercase; padding: 8px 18px; cursor: pointer;
+  font-family: 'DM Sans', sans-serif; font-size: 0.6rem;
+  letter-spacing: 0.14em; text-transform: uppercase; padding: 6px 14px; cursor: pointer;
   transition: color 0.2s, background 0.2s;
 }
 .model-mode-btn.active { background: rgba(0,212,255,0.12); color: #00d4ff; }
 #model-loading {
-  position: absolute; inset: 0; z-index: 20;
-  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px;
+  position: absolute; inset: 0; z-index: 20; border-radius: 50%;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px;
   background: #0a0a0a; transition: opacity 0.8s ease;
 }
 #model-loading.hidden { opacity: 0; pointer-events: none; }
 .model-load-ring {
-  width: 48px; height: 48px;
+  width: 32px; height: 32px;
   border: 1px solid rgba(0,212,255,0.15); border-top-color: #00d4ff;
   border-radius: 50%; animation: modelSpin 1s linear infinite;
 }
 @keyframes modelSpin { to { transform: rotate(360deg); } }
 .model-load-text {
-  font-family: 'DM Sans', sans-serif; font-size: 0.65rem;
+  font-family: 'DM Sans', sans-serif; font-size: 0.6rem;
   letter-spacing: 0.2em; text-transform: uppercase; color: rgba(0,212,255,0.6);
 }
-.model-scroll-hint {
-  position: absolute; bottom: 48px; left: 50%; transform: translateX(-50%);
-  z-index: 4; display: flex; flex-direction: column; align-items: center; gap: 8px;
-  font-family: 'DM Sans', sans-serif; font-size: 0.62rem;
-  letter-spacing: 0.18em; text-transform: uppercase; color: rgba(232,228,220,0.35);
-  animation: modelHintFade 3s ease 1.5s both;
-}
-@keyframes modelHintFade {
-  0%  { opacity:0; transform: translateX(-50%) translateY(10px); }
-  30% { opacity:0.6; transform: translateX(-50%) translateY(0); }
-  70% { opacity:0.6; }
-  100%{ opacity:0; }
-}
-.model-scroll-hint-line {
-  width: 1px; height: 32px;
-  background: linear-gradient(to bottom, #00d4ff, transparent);
-  animation: modelScrollLine 1.5s ease-in-out 1.5s infinite;
-}
-@keyframes modelScrollLine {
-  0%  { transform: scaleY(0); transform-origin: top; }
-  50% { transform: scaleY(1); transform-origin: top; }
-  51% { transform: scaleY(1); transform-origin: bottom; }
-  100%{ transform: scaleY(0); transform-origin: bottom; }
+@media (max-width: 900px) {
+  .hero-model { width: 280px; height: 280px; }
 }
 </style>
-
-<section class="model-section">
-  <div class="model-scroll-stage" id="model-scroll-stage">
-    <div class="model-sticky">
-      <canvas id="model-canvas"></canvas>
-      <div class="model-scanlines"></div>
-      <div class="model-brackets">
-        <div class="model-bracket tl"></div>
-        <div class="model-bracket tr"></div>
-        <div class="model-bracket bl"></div>
-        <div class="model-bracket br"></div>
-      </div>
-      <div class="model-hud model-hud-tl">
-        Austin Rupp<br>Digital Specialist<br>
-        <span id="model-hud-angle">ROT 000°</span>
-      </div>
-      <div class="model-hud model-hud-tr">
-        WVU Digital<br>2019 — Present<br>
-        <span id="model-hud-mode">MODE: WIRE</span>
-      </div>
-      <div class="model-hud model-hud-bl">Colorado Springs, CO</div>
-      <div class="model-hud model-hud-br">Scroll to rotate</div>
-      <div class="model-mode-toggle">
-        <button class="model-mode-btn active" data-mode="wire">Wireframe</button>
-        <button class="model-mode-btn" data-mode="solid">Solid</button>
-        <button class="model-mode-btn" data-mode="xray">X-Ray</button>
-      </div>
-      <div class="model-scroll-hint">
-        Scroll
-        <div class="model-scroll-hint-line"></div>
-      </div>
-      <div id="model-loading">
-        <div class="model-load-ring"></div>
-        <div class="model-load-text">Initializing scan</div>
-      </div>
-    </div>
-  </div>
-</section>
 
 
 <!-- WORK -->
@@ -273,13 +221,7 @@ function updateTime() {
 setInterval(updateTime, 1000);
 updateTime();
 
-const blob = document.getElementById('heroBlob');
-window.addEventListener('scroll', () => {
-  const s = window.scrollY;
-  const r1 = 50 + (s * 0.05) % 30;
-  const r2 = 50 - (s * 0.04) % 20;
-  blob.style.borderRadius = `${r1}% ${100-r1}% ${r2}% ${100-r2}% / ${100-r2}% ${r1}% ${100-r1}% ${r2}%`;
-}, { passive: true });
+
 
 const reveals = document.querySelectorAll('.reveal');
 const revealObserver = new IntersectionObserver(entries => {
@@ -305,8 +247,6 @@ document.querySelectorAll('[data-count]').forEach(el => {
 
   const canvas   = document.getElementById('model-canvas');
   const loading  = document.getElementById('model-loading');
-  const hudAngle = document.getElementById('model-hud-angle');
-  const hudMode  = document.getElementById('model-hud-mode');
   const modeBtns = document.querySelectorAll('.model-mode-btn');
 
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
@@ -336,14 +276,13 @@ document.querySelectorAll('[data-count]').forEach(el => {
   accentLight.position.set(2, -1, 1);
   scene.add(accentLight);
 
-const wireMat = new THREE.MeshBasicMaterial({ color: 0x00d4ff, wireframe: true, transparent: true, opacity: 0.06, side: THREE.DoubleSide, depthWrite: false });
+  const wireMat  = new THREE.MeshBasicMaterial({ color: 0x00d4ff, wireframe: true, transparent: true, opacity: 0.06, side: THREE.DoubleSide, depthWrite: false });
   const solidMat = new THREE.MeshStandardMaterial({ color: 0x1a2a35, roughness: 0.6, metalness: 0.3, emissive: 0x00d4ff, emissiveIntensity: 0.04 });
   const xrayMat  = new THREE.MeshBasicMaterial({ color: 0x00d4ff, transparent: true, opacity: 0.08, side: THREE.DoubleSide });
 
   let modelGroup = null;
 
   function applyMode(mode) {
-    hudMode.textContent = 'MODE: ' + mode.toUpperCase();
     if (!modelGroup) return;
     const mat = mode === 'wire' ? wireMat : mode === 'solid' ? solidMat : xrayMat;
     modelGroup.traverse(child => { if (child.isMesh) { child.material = mat; } });
@@ -373,10 +312,9 @@ const wireMat = new THREE.MeshBasicMaterial({ color: 0x00d4ff, wireframe: true, 
       const center = box.getCenter(new THREE.Vector3());
       const size   = box.getSize(new THREE.Vector3());
       const scale  = 2.2 / Math.max(size.x, size.y, size.z);
-     modelGroup.position.sub(center.multiplyScalar(scale));
-modelGroup.scale.setScalar(scale);
-modelGroup.rotation.x = Math.PI / 2;
-applyMode('wire');
+      modelGroup.position.sub(center.multiplyScalar(scale));
+      modelGroup.scale.setScalar(scale);
+      applyMode('wire');
       scene.add(modelGroup);
       loading.classList.add('hidden');
       resize();
@@ -400,15 +338,10 @@ applyMode('wire');
   let targetRotX = 0, currentRotX = 0;
 
   window.addEventListener('scroll', () => {
-    const stage    = document.getElementById('model-scroll-stage');
-    const rect     = stage.getBoundingClientRect();
-    const total    = stage.offsetHeight - window.innerHeight;
-    const scrolled = Math.max(0, -rect.top);
-    const progress = Math.min(1, scrolled / total);
+    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+    const progress  = Math.min(1, window.scrollY / Math.max(1, maxScroll * 0.4));
     targetRotY = (progress - 0.5) * Math.PI * (2 / 3);
     targetRotX = Math.sin(progress * Math.PI) * 0.15;
-    const deg = Math.round(((progress - 0.5) * 120 + 360) % 360);
-    hudAngle.textContent = 'ROT ' + String(deg).padStart(3, '0') + '°';
   }, { passive: true });
 
   let mouseX = 0, mouseY = 0;
