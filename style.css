@@ -1468,6 +1468,8 @@ body::after,
 
 
 
+.single-wrap { background: var(--paper); color: var(--ink); min-height: 100vh; }
+
 /* ── TOPBAR ── */
 .single-topbar,
 .blog-topbar {
@@ -1541,11 +1543,11 @@ body::after,
 
 /* ── CONTENT ── */
 .single-content-wrap {
-  padding: 5rem 3rem;
+  padding: 5rem 4rem;
 }
 
 .single-content {
-  max-width: 640px;
+  max-width: 740px;
   font-family: 'Instrument Serif', serif;
   font-size: 1.2rem;
   line-height: 1.8;
