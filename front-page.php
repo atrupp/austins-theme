@@ -65,11 +65,11 @@
 <style>
 .hero-model {
   position: absolute;
-  right: -120px;
+  right: -200px;
   top: 50%;
-  transform: translateY(-42%);
-  width: 620px;
-  height: 620px;
+  transform: translateY(-38%);
+  width: 1000px;
+  height: 1000px;
   z-index: 1;
 }
 #model-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; border-radius: 50%; }
