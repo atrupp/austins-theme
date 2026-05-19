@@ -1541,14 +1541,11 @@ body::after,
 
 /* ── CONTENT ── */
 .single-content-wrap {
-  display: grid;
-  grid-template-columns: 1fr 640px 1fr;
-  gap: 0;
-  padding: 5rem 0;
+  padding: 5rem 3rem;
 }
 
 .single-content {
-  grid-column: 2;
+  max-width: 640px;
   font-family: 'Instrument Serif', serif;
   font-size: 1.2rem;
   line-height: 1.8;
@@ -1682,8 +1679,7 @@ body::after,
 
 
 @media (max-width: 900px) {
-  .single-content-wrap { grid-template-columns: 1fr; padding: 3rem 1.5rem; }
-  .single-content { grid-column: 1; }
+  .single-content-wrap { padding: 3rem 1.5rem; }
   .single-topbar, .single-header, .single-footer { padding-left: 1.5rem; padding-right: 1.5rem; }
 }
 
