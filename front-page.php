@@ -125,7 +125,7 @@
   </div>
 
   <div class="gallery-cta-buttons">
-    <a href="<?php echo esc_url( get_permalink( get_page_by_path('work') ) ); ?>" class="gallery-btn">
+    <a href="<?php echo esc_url( get_permalink( get_page_by_path('projects') ) ); ?>" class="gallery-btn">
       ENTER<br>GALLERY<br>→
     </a>
 
