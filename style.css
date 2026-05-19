@@ -1731,7 +1731,7 @@ body::after,
 }
 
 .blog-hero-right {
-  font-family: 'Instrument Serif', serif;
+  font-family: Georgia, serif;
   font-size: 1.1rem;
   color: var(--mid);
   max-width: 280px;
@@ -1800,7 +1800,7 @@ body::after,
 .blog-post-item:hover .blog-post-title { color: var(--accent); }
 
 .blog-post-excerpt {
-  font-family: 'Instrument Serif', serif;
+  font-family: Georgia, serif;
   font-size: 1rem;
   color: var(--mid);
   line-height: 1.6;
@@ -1856,7 +1856,7 @@ body::after,
 }
 
 .blog-empty-sub {
-  font-family: 'Instrument Serif', serif;
+  font-family: Georgia, serif;
   font-size: 1.2rem;
   color: var(--mid);
 }
