@@ -69,10 +69,12 @@
 <!-- 3D MODEL STYLES -->
 <style>
 .hero-model {
-  position: relative;
+  position: absolute;
+  right: -5%;
+  top: 50%;
+  transform: translateY(-50%);
   width: 420px;
   height: 420px;
-  flex-shrink: 0;
 }
 #model-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; border-radius: 50%; }
 .model-scanlines {
@@ -116,7 +118,10 @@
   letter-spacing: 0.2em; text-transform: uppercase; color: rgba(0,212,255,0.6);
 }
 @media (max-width: 900px) {
-  .hero-model { width: 280px; height: 280px; }
+  .hero-model { width: 280px; height: 280px; right: -2%; }
+}
+@media (max-width: 600px) {
+  .hero-model { position: relative; right: auto; top: auto; transform: none; width: 240px; height: 240px; margin: 2rem auto 0; }
 }
 </style>
 
