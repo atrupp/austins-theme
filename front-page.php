@@ -336,7 +336,7 @@ document.querySelectorAll('[data-count]').forEach(el => {
   accentLight.position.set(2, -1, 1);
   scene.add(accentLight);
 
-  const wireMat  = new THREE.MeshBasicMaterial({ color: 0x00d4ff, wireframe: true, transparent: true, opacity: 0.55 });
+  const wireMat  = new THREE.MeshBasicMaterial({ color: 0x00d4ff, wireframe: true, transparent: true, opacity: 0.08 });
   const solidMat = new THREE.MeshStandardMaterial({ color: 0x1a2a35, roughness: 0.6, metalness: 0.3, emissive: 0x00d4ff, emissiveIntensity: 0.04 });
   const xrayMat  = new THREE.MeshBasicMaterial({ color: 0x00d4ff, transparent: true, opacity: 0.08, side: THREE.DoubleSide });
 
