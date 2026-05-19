@@ -1007,9 +1007,14 @@ body {
 }
 
 .hero-main {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  grid-template-rows: auto auto;
+  grid-template-areas:
+    "headline model"
+    "sub      model";
+  column-gap: 4rem;
+  align-items: center;
   position: relative;
   padding: 4rem 0;
 }
@@ -1024,12 +1029,14 @@ body {
 
 .hero-headline {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(5rem, 14vw, 13rem);
+  font-size: clamp(4rem, 8vw, 11rem);
   line-height: 0.9;
   letter-spacing: -0.01em;
   color: var(--ink);
   position: relative;
   z-index: 2;
+  grid-area: headline;
+  align-self: end;
 }
 
 .hero-headline em {
@@ -1101,6 +1108,8 @@ body {
   align-items: flex-start;
   position: relative;
   z-index: 3;
+  grid-area: sub;
+  align-self: start;
 }
 
 .hero-bio {
@@ -1454,9 +1463,22 @@ body::after,
   transform: translateY(0);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .hero { padding: 1.5rem; }
   .hero-blob { display: none; }
+  .hero-main {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    grid-template-areas:
+      "headline"
+      "sub"
+      "model";
+    column-gap: 0;
+  }
+  .hero-headline {
+    font-size: clamp(4rem, 14vw, 13rem);
+    align-self: auto;
+  }
   .hero-sub { flex-direction: column; gap: 2rem; }
   .work-section { padding: 4rem 1.5rem; }
   .project-card { grid-template-columns: 50px 1fr auto; gap: 1rem; }
