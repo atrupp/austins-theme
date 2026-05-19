@@ -1559,6 +1559,15 @@ body::after,
 
 .single-content h1,
 .single-content h2,
+.single-content h3,
+.single-content h4,
+.single-content h5,
+.single-content h6 {
+  clear: none;
+}
+
+.single-content h1,
+.single-content h2,
 .single-content h3 {
   font-family: 'Bebas Neue', sans-serif;
   letter-spacing: 0.02em;
