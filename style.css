@@ -1456,8 +1456,7 @@ body::after,
   transform: translateY(0);
 }
 
-@media (max-width: 900px) {
-  .hero { padding: 1.5rem; }
+@media (max-width: 1800px) {
   .hero-blob { display: none; }
   .hero-main {
     display: grid;
@@ -1469,6 +1468,10 @@ body::after,
   }
   .hero-headline { font-size: clamp(4rem, 14vw, 13rem); }
   .hero-sub { flex-direction: column; gap: 2rem; }
+}
+
+@media (max-width: 900px) {
+  .hero { padding: 1.5rem; }
   .work-section { padding: 4rem 1.5rem; }
   .project-card { grid-template-columns: 50px 1fr auto; gap: 1rem; }
   .project-meta { display: none; }

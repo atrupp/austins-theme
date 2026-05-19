@@ -108,15 +108,15 @@
   font-family: 'DM Sans', sans-serif; font-size: 0.6rem;
   letter-spacing: 0.2em; text-transform: uppercase; color: rgba(0,212,255,0.6);
 }
-@media (max-width: 900px) {
+@media (max-width: 1800px) {
   .hero-model {
     position: relative;
     right: auto;
     top: auto;
     transform: none;
     z-index: auto;
-    width: 280px;
-    height: 280px;
+    width: 320px;
+    height: 320px;
     grid-area: model;
     margin: 2rem auto 0;
   }
@@ -340,20 +340,12 @@ document.querySelectorAll('[data-count]').forEach(el => {
     );
   };
 
-  let targetRotY = 0, currentRotY = 0;
-  let targetRotX = 0, currentRotX = 0;
+  let currentRotY = 0, currentRotX = 0;
+  let targetRotY = 0, targetRotX = 0;
 
-  window.addEventListener('scroll', () => {
-    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-    const progress  = Math.min(1, window.scrollY / Math.max(1, maxScroll * 0.4));
-    targetRotY = (progress - 0.5) * Math.PI * (2 / 3);
-    targetRotX = Math.sin(progress * Math.PI) * 0.15;
-  }, { passive: true });
-
-  let mouseX = 0, mouseY = 0;
   document.addEventListener('mousemove', e => {
-    mouseX = (e.clientX / window.innerWidth  - 0.5) * 0.15;
-    mouseY = (e.clientY / window.innerHeight - 0.5) * 0.1;
+    targetRotY = (e.clientX / window.innerWidth  - 0.5) * Math.PI * 0.5;
+    targetRotX = (e.clientY / window.innerHeight - 0.5) * Math.PI * 0.3;
   });
 
   let frame = 0;
@@ -361,8 +353,8 @@ document.querySelectorAll('[data-count]').forEach(el => {
     requestAnimationFrame(tick);
     frame++;
     if (modelGroup) {
-      currentRotY += (targetRotY + mouseX - currentRotY) * 0.06;
-      currentRotX += (targetRotX + mouseY - currentRotX) * 0.06;
+      currentRotY += (targetRotY - currentRotY) * 0.06;
+      currentRotX += (targetRotX - currentRotX) * 0.06;
       modelGroup.rotation.y = currentRotY;
       modelGroup.rotation.x = currentRotX;
     }
