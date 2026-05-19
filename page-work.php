@@ -13,12 +13,11 @@
 get_header(); ?>
 
 <?php
-$projects_parent = get_page_by_path( 'projects' );
 $projects = new WP_Query([
   'post_type'      => 'page',
   'posts_per_page' => -1,
   'post_status'    => 'publish',
-  'post_parent'    => $projects_parent ? $projects_parent->ID : 0,
+  'post_parent'    => get_queried_object_id(),
   'orderby'        => 'menu_order',
   'order'          => 'ASC',
 ]);
