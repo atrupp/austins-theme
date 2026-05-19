@@ -207,14 +207,14 @@
 
 const cursor = document.getElementById('cursor');
 let mx = 0, my = 0, cx = 0, cy = 0;
-document.addEventListener('mousemove', e => { mx = e.clientX - 6; my = e.clientY - 6; });
+document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
 document.querySelectorAll('a, button, .project-card, .hero-blob').forEach(el => {
   el.addEventListener('mouseenter', () => cursor.classList.add('big'));
   el.addEventListener('mouseleave', () => cursor.classList.remove('big'));
 });
 function animateCursor() {
   cx += (mx - cx) * 0.18; cy += (my - cy) * 0.18;
-  cursor.style.transform = `translate(${cx}px, ${cy}px)`;
+  cursor.style.transform = `translate(calc(${cx}px - 50%), calc(${cy}px - 50%))`;
   requestAnimationFrame(animateCursor);
 }
 animateCursor();

@@ -977,7 +977,7 @@ body {
   transition: transform 0.15s ease, width 0.2s, height 0.2s;
   mix-blend-mode: multiply;
 }
-.cursor.big { width: 60px; height: 60px; transform: translate(-24px, -24px); }
+.cursor.big { width: 60px; height: 60px; }
 
 /* ── HERO ── */
 .hero {
@@ -1426,7 +1426,7 @@ body {
 }
 
 .gallery-btn:hover {
-  background: var(--accent);
+  background: var(--ink);
   border-color: var(--accent);
   color: var(--paper);
   transform: scale(1.08);
