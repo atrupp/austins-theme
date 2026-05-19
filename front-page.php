@@ -375,6 +375,7 @@ document.querySelectorAll('[data-count]').forEach(el => {
       const scale  = 2.2 / Math.max(size.x, size.y, size.z);
       modelGroup.position.sub(center.multiplyScalar(scale));
       modelGroup.scale.setScalar(scale);
+      modelGroup.rotation.x = -Math.PI / 2;
       applyMode('wire');
       scene.add(modelGroup);
       loading.classList.add('hidden');
