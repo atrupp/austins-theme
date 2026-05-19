@@ -65,7 +65,7 @@
 <style>
 .hero-model {
   position: absolute;
-  right: -200px;
+  right: -10px;
   top: 50%;
   transform: translateY(-58%);
   width: 1000px;
