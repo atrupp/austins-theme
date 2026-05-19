@@ -22,9 +22,8 @@
       <div class="model-scanlines"></div>
 
       <div class="model-mode-toggle">
-        <button class="model-mode-btn active" data-mode="wire">Wire</button>
-        <button class="model-mode-btn" data-mode="solid">Solid</button>
-        <button class="model-mode-btn" data-mode="xray">X-Ray</button>
+        <button class="model-mode-btn" data-mode="wire">Wire</button>
+        <button class="model-mode-btn active" data-mode="solid">Solid</button>
       </div>
       <div id="model-loading">
         <div class="model-load-ring"></div>
@@ -320,7 +319,7 @@ document.querySelectorAll('[data-count]').forEach(el => {
       const scale  = 2.2 / Math.max(size.x, size.y, size.z);
       modelGroup.position.sub(center.multiplyScalar(scale));
       modelGroup.scale.setScalar(scale);
-      applyMode('wire');
+      applyMode('solid');
       scene.add(modelGroup);
       loading.classList.add('hidden');
       resize();
