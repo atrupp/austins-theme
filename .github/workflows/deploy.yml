@@ -10,7 +10,19 @@ jobs:
     steps:
     - name: 🚚 Get latest code
       uses: actions/checkout@v4
-    
+
+    - name: 🔑 Test SSH Connection
+      run: |
+        echo "${{ secrets.BLUEHOST_SSH_KEY }}" > /tmp/test_key
+        chmod 600 /tmp/test_key
+        ssh -vvv -i /tmp/test_key \
+          -o IdentitiesOnly=yes \
+          -o IdentityAgent=none \
+          -o StrictHostKeyChecking=no \
+          -p 22 \
+          ${{ secrets.BLUEHOST_USERNAME }}@${{ secrets.BLUEHOST_SERVER }} \
+          "echo connected"
+
     - name: 🚀 SFTP Deploy to Bluehost Theme Folder
       uses: easingthemes/ssh-deploy@v5.1.0
       with:
