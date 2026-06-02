@@ -20,7 +20,7 @@ jobs:
         REMOTE_HOST: ${{ secrets.BLUEHOST_SERVER }}
         REMOTE_USER: ${{ secrets.BLUEHOST_USERNAME }}
         SOURCE: "./"
-
         TARGET: "/home2/izsuvemy/public_html/wp-content/themes/austins-theme/"
-        # MANDATORY FOR BLUEHOST: Strips out background keys so only your key is sent
         SSH_CMD_ARGS: "-o IdentitiesOnly=yes"
+        # SWITCH PORT TO BLUEHOST SHARED STANDARD
+        PORT: 2222 
