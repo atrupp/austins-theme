@@ -1,4 +1,4 @@
-name: Deploy Theme to Bluehost
+name: Deploy Theme to Bluehost (SFTP)
 
 on:
   push:
@@ -6,18 +6,20 @@ on:
       - main # Change to master if your primary branch is master
 
 jobs:
-  web-deploy:
-    name: 🎉 Deploy Theme
+  deploy:
+    name: 🎉 SFTP Deploy
     runs-on: ubuntu-latest
     steps:
     - name: 🚚 Get latest code
       uses: actions/checkout@v4
     
-    - name: 🚀 FTP Deploy to Bluehost Theme Folder
-      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+    - name: 🚀 SFTP Deploy to Bluehost Theme Folder
+      uses: wlixcc/SFTP-Deploy-Action@v1.2.6
       with:
-        server: ${{ secrets.BLUEHOST_SERVER }}
         username: ${{ secrets.BLUEHOST_USERNAME }}
-        password: ${{ secrets.BLUEHOST_PASSWORD }}
+        server: ${{ secrets.BLUEHOST_SERVER }}
+        ssh_private_key: ${{ secrets.BLUEHOST_SSH_KEY }}
+        # Port is 22 for secure SSH connections
+        port: 22 
         # Update 'your-theme-folder' to match your actual theme folder name on Bluehost
-        server-dir: public_html/wp-content/themes/your-theme-folder/
+        remote_path: '/home/your_bluehost_username/public_html/wp-content/themes/your-theme-folder'
