@@ -3,7 +3,7 @@ name: Deploy Theme to Bluehost (SFTP)
 on:
   push:
     branches:
-      - main # Change to master if your primary branch is master
+      - master # Triggered automatically whenever you push to master
 
 jobs:
   deploy:
@@ -19,7 +19,6 @@ jobs:
         username: ${{ secrets.BLUEHOST_USERNAME }}
         server: ${{ secrets.BLUEHOST_SERVER }}
         ssh_private_key: ${{ secrets.BLUEHOST_SSH_KEY }}
-        # Port is 22 for secure SSH connections
         port: 22 
-        # Update 'your-theme-folder' to match your actual theme folder name on Bluehost
-        remote_path: '/home/your_bluehost_username/public_html/wp-content/themes/your-theme-folder'
+        # UPDATE 'atrupp-theme' to your actual theme folder name on Bluehost
+        remote_path: '/home/atrupp/public_html/wp-content/themes/atrupp-theme'
