@@ -188,7 +188,7 @@
 <!-- GALLERY CTA -->
 <div class="gallery-cta reveal">
   <div class="gallery-cta-text">
-    <div class="gallery-cta-eyebrow">◆ THE FULL COLLECTION test 2</div>
+    <div class="gallery-cta-eyebrow">◆ THE FULL COLLECTION test 3</div>
     <h2 class="gallery-cta-headline">THERE'S<br><em>More</em><br>WHERE THAT<br>CAME FROM.</h2>
     <p class="gallery-cta-sub">Every project tells a story. Come see the rest of the work.</p>
   </div>
