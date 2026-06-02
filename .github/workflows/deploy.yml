@@ -3,7 +3,7 @@ name: Deploy Theme to Bluehost (SFTP)
 on:
   push:
     branches:
-      - master # Triggered automatically whenever you push to master
+      - master
 
 jobs:
   deploy:
@@ -14,11 +14,10 @@ jobs:
       uses: actions/checkout@v4
     
     - name: 🚀 SFTP Deploy to Bluehost Theme Folder
-      uses: wlixcc/SFTP-Deploy-Action@v1.2.6
+      uses: easingthemes/ssh-deploy@v5.1.0
       with:
-        username: ${{ secrets.BLUEHOST_USERNAME }}
-        server: ${{ secrets.BLUEHOST_SERVER }}
-        ssh_private_key: ${{ secrets.BLUEHOST_SSH_KEY }}
-        port: 22 
-        # UPDATE 'atrupp-theme' to your actual theme folder name on Bluehost
-        remote_path: '/home/atrupp/public_html/wp-content/themes/atrupp-theme'
+        SSH_PRIVATE_KEY: ${{ secrets.BLUEHOST_SSH_KEY }}
+        REMOTE_HOST: ${{ secrets.BLUEHOST_SERVER }}
+        REMOTE_USER: ${{ secrets.BLUEHOST_USERNAME }}
+        ARGS: "-rlgoDIVzc --delete"
+        TARGET: "/home/atrupp/public_html/wp-content/themes/austins-theme/"
