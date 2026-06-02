@@ -1,10 +1,8 @@
 name: Deploy Theme to Bluehost (SFTP)
-
 on:
   push:
     branches:
       - master
-
 jobs:
   deploy:
     name: 🎉 SFTP Deploy
@@ -21,5 +19,4 @@ jobs:
         REMOTE_USER: ${{ secrets.BLUEHOST_USERNAME }}
         SOURCE: "./"
         TARGET: "/home2/izsuvemy/public_html/wp-content/themes/austins-theme/"
-        # THE FIX: Forces connection to trust your key AND skip strict host checking
-        SSH_CMD_ARGS: "-o IdentitiesOnly=yes -o StrictHostKeyChecking=no"
+        SSH_CMD_ARGS: "-o IdentitiesOnly=yes -o StrictHostKeyChecking=no -o IdentityAgent=none"
