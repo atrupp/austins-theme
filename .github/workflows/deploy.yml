@@ -20,4 +20,5 @@ jobs:
         REMOTE_HOST: ${{ secrets.BLUEHOST_SERVER }}
         REMOTE_USER: ${{ secrets.BLUEHOST_USERNAME }}
         ARGS: "-rlgoDIVzc --delete"
-        TARGET: "/home/atrupp/public_html/wp-content/themes/austins-theme/"
+        # Adjusted perfectly to your server's exact path layout
+        TARGET: "/home2/izsuvemy/public_html/wp-content/themes/austins-theme/"
