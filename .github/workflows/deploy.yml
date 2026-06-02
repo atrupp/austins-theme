@@ -1,21 +1,22 @@
-name: Deploy Theme to Bluehost
+name: Deploy Theme to Bluehost (SFTP)
 on:
   push:
     branches:
       - master
 jobs:
   deploy:
-    name: 🎉 FTP Deploy
+    name: 🎉 Deploy
     runs-on: ubuntu-latest
     steps:
     - name: 🚚 Get latest code
       uses: actions/checkout@v4
 
-    - name: 📦 Deploy via FTP
-      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+    - name: 🚀 Deploy to Bluehost
+      uses: easingthemes/ssh-deploy@v5.1.0
       with:
-        server: ${{ secrets.FTP_HOST }}
-        username: ${{ secrets.FTP_USERNAME }}
-        password: ${{ secrets.FTP_PASSWORD }}
-        local-dir: ./
-        server-dir: /public_html/wp-content/themes/austins-theme/
+        SSH_PRIVATE_KEY: ${{ secrets.BLUEHOST_SSH_KEY }}
+        REMOTE_HOST: ${{ secrets.BLUEHOST_SERVER }}
+        REMOTE_USER: ${{ secrets.BLUEHOST_USERNAME }}
+        SOURCE: "./"
+        TARGET: "/home2/izsuvemy/public_html/wp-content/themes/austins-theme/"
+        SSH_CMD_ARGS: "-o IdentitiesOnly=yes -o StrictHostKeyChecking=no -o IdentityAgent=none"
