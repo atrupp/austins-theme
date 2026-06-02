@@ -1,0 +1,23 @@
+name: Deploy Theme to Bluehost
+
+on:
+  push:
+    branches:
+      - main # Change to master if your primary branch is master
+
+jobs:
+  web-deploy:
+    name: 🎉 Deploy Theme
+    runs-on: ubuntu-latest
+    steps:
+    - name: 🚚 Get latest code
+      uses: actions/checkout@v4
+    
+    - name: 🚀 FTP Deploy to Bluehost Theme Folder
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      with:
+        server: ${{ secrets.BLUEHOST_SERVER }}
+        username: ${{ secrets.BLUEHOST_USERNAME }}
+        password: ${{ secrets.BLUEHOST_PASSWORD }}
+        # Update 'your-theme-folder' to match your actual theme folder name on Bluehost
+        server-dir: public_html/wp-content/themes/your-theme-folder/
