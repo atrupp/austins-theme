@@ -19,7 +19,8 @@ jobs:
         SSH_PRIVATE_KEY: ${{ secrets.BLUEHOST_SSH_KEY }}
         REMOTE_HOST: ${{ secrets.BLUEHOST_SERVER }}
         REMOTE_USER: ${{ secrets.BLUEHOST_USERNAME }}
-        SOURCE: ""
+        SOURCE: "./"
+
         TARGET: "/home2/izsuvemy/public_html/wp-content/themes/austins-theme/"
         # MANDATORY FOR BLUEHOST: Strips out background keys so only your key is sent
         SSH_CMD_ARGS: "-o IdentitiesOnly=yes"
