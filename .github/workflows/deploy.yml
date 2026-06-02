@@ -1,34 +1,21 @@
-name: Deploy Theme to Bluehost (SFTP)
+name: Deploy Theme to Bluehost
 on:
   push:
     branches:
       - master
 jobs:
   deploy:
-    name: 🎉 SFTP Deploy
+    name: 🎉 FTP Deploy
     runs-on: ubuntu-latest
     steps:
     - name: 🚚 Get latest code
       uses: actions/checkout@v4
 
-    - name: 🔑 Test SSH Connection
-      run: |
-        echo "${{ secrets.BLUEHOST_SSH_KEY }}" > /tmp/test_key
-        chmod 600 /tmp/test_key
-        ssh -vvv -i /tmp/test_key \
-          -o IdentitiesOnly=yes \
-          -o IdentityAgent=none \
-          -o StrictHostKeyChecking=no \
-          -p 22 \
-          ${{ secrets.BLUEHOST_USERNAME }}@${{ secrets.BLUEHOST_SERVER }} \
-          "echo connected"
-
-    - name: 🚀 SFTP Deploy to Bluehost Theme Folder
-      uses: easingthemes/ssh-deploy@v5.1.0
+    - name: 📦 Deploy via FTP
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
       with:
-        SSH_PRIVATE_KEY: ${{ secrets.BLUEHOST_SSH_KEY }}
-        REMOTE_HOST: ${{ secrets.BLUEHOST_SERVER }}
-        REMOTE_USER: ${{ secrets.BLUEHOST_USERNAME }}
-        SOURCE: "./"
-        TARGET: "/home2/izsuvemy/public_html/wp-content/themes/austins-theme/"
-        SSH_CMD_ARGS: "-o IdentitiesOnly=yes -o StrictHostKeyChecking=no -o IdentityAgent=none"
+        server: ${{ secrets.FTP_HOST }}
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        local-dir: ./
+        server-dir: /public_html/wp-content/themes/austins-theme/
