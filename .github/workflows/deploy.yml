@@ -19,6 +19,5 @@ jobs:
         SSH_PRIVATE_KEY: ${{ secrets.BLUEHOST_SSH_KEY }}
         REMOTE_HOST: ${{ secrets.BLUEHOST_SERVER }}
         REMOTE_USER: ${{ secrets.BLUEHOST_USERNAME }}
-        ARGS: "-rlgoDIVzc --delete"
-        # Adjusted perfectly to your server's exact path layout
+        SOURCE: "" # Deploy the root directory files
         TARGET: "/home2/izsuvemy/public_html/wp-content/themes/austins-theme/"
