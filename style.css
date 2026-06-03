@@ -1348,7 +1348,7 @@ body {
   background: var(--paper);
   padding: 5rem 4rem;
   display: grid;
-  grid-template-columns: minmax(250px, 1fr) auto;
+  grid-template-columns: 1fr 1fr;
   align-items: center;
   gap: 2rem;
   position: relative;
@@ -1376,7 +1376,7 @@ body {
 .gallery-cta-buttons {
   display: grid;
   gap: 1rem;
-  justify-items: end;
+  justify-items: center;
 }
 
 .gallery-cta-eyebrow {
