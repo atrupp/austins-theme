@@ -953,7 +953,7 @@ textarea {
 :root {
   --ink: #494e5e;
   --paper: #f2efe8;
-  --accent: #ff3c2e;
+  --accent: #ff7d2e;
   --mid: #8a8680;
 }
 
@@ -999,6 +999,7 @@ body {
   align-items: center;
   padding-bottom: 2rem;
   border-bottom: 1px solid rgba(0,0,0,0.1);
+  z-index: 3;
 }
 
 .hero-ticker-right {
@@ -1016,7 +1017,7 @@ body {
 
 .hero-eyebrow {
   font-family: 'DM Mono', monospace;
-  font-size: 11px;
+  font-size: 1empx;
   letter-spacing: 0.3em;
   color: var(--accent);
   margin-bottom: 1.5rem;
