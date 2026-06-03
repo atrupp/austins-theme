@@ -1376,7 +1376,7 @@ body {
 .gallery-cta-buttons {
   display: grid;
   gap: 1rem;
-  justify-items: center;
+  justify-items: left;
 }
 
 .gallery-cta-eyebrow {
