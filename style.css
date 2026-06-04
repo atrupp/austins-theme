@@ -2005,7 +2005,7 @@ a { color: inherit; text-decoration: none; }
 .project-back {
   position: fixed;
   top: 28px;
-  left: 36px;
+  left: 100px;
   z-index: 100;
   display: inline-flex;
   align-items: center;
@@ -2537,7 +2537,7 @@ a { color: inherit; text-decoration: none; }
 .photo-back {
   position: fixed;
   top: 28px;
-  left: 36px;
+  left: 100px;
   z-index: 100;
   display: inline-flex;
   align-items: center;
@@ -2832,7 +2832,7 @@ a { color: inherit; text-decoration: none; }
   50%       { filter: drop-shadow(0 0 9px rgba(0, 212, 255, 0.95)) drop-shadow(0 0 20px rgba(0, 212, 255, 0.4)); }
 }
 
-/* CRT scanlines overlay */
+/* 
 .tron-scanlines {
   position: absolute;
   inset: 0;
@@ -2846,8 +2846,10 @@ a { color: inherit; text-decoration: none; }
     rgba(0, 212, 255, 0.028) 4px
   );
 }
+CRT scanlines overlay */
 
-/* Vertical sweep — bright horizontal bar scrolls top to bottom */
+
+/* v
 .tron-sweep {
   position: absolute;
   left: 0;
@@ -2875,7 +2877,7 @@ a { color: inherit; text-decoration: none; }
   90%  { opacity: 0.85; }
   100% { transform: translateY(110px); opacity: 0; }
 }
-
+Vertical sweep — bright horizontal bar scrolls top to bottom */
 /* Horizontal light-bike trails cut across the seal */
 .tron-trail {
   position: absolute;
