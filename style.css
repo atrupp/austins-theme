@@ -2016,9 +2016,9 @@ a { color: inherit; text-decoration: none; }
   inset: 0;
   background: linear-gradient(
     to bottom,
-    rgba(14,14,14,0.2) 0%,
-    rgba(14,14,14,0.1) 40%,
-    rgba(14,14,14,0.85) 80%,
+    rgba(14,14,14,0.55) 0%,
+    rgba(14,14,14,0.25) 35%,
+    rgba(14,14,14,0.75) 72%,
     rgba(14,14,14,1) 100%
   );
 }
@@ -2104,7 +2104,7 @@ a { color: inherit; text-decoration: none; }
 .project-hero.no-image {
   height: auto;
   min-height: 0;
-  padding-top: 140px;
+  padding-top: 60px;
   background: var(--bg);
 }
 .project-hero.no-image .hero-bg { display: none; }
@@ -2141,10 +2141,11 @@ a { color: inherit; text-decoration: none; }
 
 /* ─── Content area ─────────────────────────────────────────── */
 .project-content {
-  padding: 80px 0 120px;
+  padding: 80px 6vw 120px;
+  color: rgba(232, 228, 220, 0.78);
 }
 
-/* Gutenberg block defaults -- all centered at content width */
+/* Gutenberg block defaults — centered at content width inside the padded container */
 .project-content .wp-block-paragraph,
 .project-content .wp-block-heading,
 .project-content .wp-block-list,
@@ -2159,8 +2160,6 @@ a { color: inherit; text-decoration: none; }
   max-width: var(--content-w);
   margin-left: auto;
   margin-right: auto;
-  padding-left: 6vw;
-  padding-right: 6vw;
 }
 
 /* Wide blocks */
@@ -2170,25 +2169,26 @@ a { color: inherit; text-decoration: none; }
   max-width: var(--wide-w);
   margin-left: auto;
   margin-right: auto;
-  padding-left: 4vw;
-  padding-right: 4vw;
 }
 
-/* Full-width blocks */
+/* Full-width blocks break out of the container padding */
 .project-content .wp-block-image.alignfull,
 .project-content .wp-block-gallery.alignfull,
 .project-content .alignfull {
-  max-width: 100%;
+  max-width: none;
+  margin-left: -6vw;
+  margin-right: -6vw;
   padding-left: 0;
   padding-right: 0;
 }
 
 /* ── Paragraphs ── */
-.project-content .wp-block-paragraph {
+.project-content .wp-block-paragraph,
+.project-content p {
   font-size: 1.05rem;
   font-weight: 300;
   line-height: 1.85;
-  color: rgba(232,228,220,0.78);
+  color: rgba(232, 228, 220, 0.78);
   margin-bottom: 1.6em;
 }
 
@@ -2869,6 +2869,10 @@ Vertical sweep — bright horizontal bar scrolls top to bottom */
   align-items: center;
   gap: 20px;
   padding: 18px 32px;
+  background: rgba(10, 10, 10, 0.82);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .site-logo {
