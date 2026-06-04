@@ -42,9 +42,7 @@ $next_project = $current_pos < count($siblings) - 1 ? $siblings[ $current_pos + 
 
 <!-- Hero -->
 <div class="project-hero <?php echo $hero_img ? 'has-image' : 'no-image'; ?>" id="project-hero">
-  <?php if ( $hero_img ) : ?>
-  <div class="hero-bg" style="background-image: url('<?php echo esc_url($hero_img); ?>')"></div>
-  <?php endif; ?>
+
   <div class="hero-content">
     <div class="hero-meta-row">
       <?php foreach ( $tags_arr as $tag ) : ?>
@@ -64,6 +62,13 @@ $next_project = $current_pos < count($siblings) - 1 ? $siblings[ $current_pos + 
       <?php endif; ?>
     </div>
   </div>
+
+  <?php if ( $hero_img ) : ?>
+  <div class="hero-image-col">
+    <img src="<?php echo esc_url($hero_img); ?>" alt="<?php the_title(); ?>" class="hero-screenshot">
+  </div>
+  <?php endif; ?>
+
 </div>
 
 <!-- Meta strip -->

@@ -1991,43 +1991,38 @@ a { color: inherit; text-decoration: none; }
 
 /* ─── Hero ─────────────────────────────────────────────────── */
 .project-hero {
-  position: relative;
-  width: 100%;
-  height: 92vh;
-  min-height: 560px;
-  overflow: hidden;
-  display: flex;
-  align-items: flex-end;
-}
-
-.hero-bg {
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center;
-  transform: scale(1.06);
-  transition: transform 8s var(--ease-out);
-}
-.project-hero.loaded .hero-bg { transform: scale(1); }
-
-.hero-bg::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(14,14,14,0.55) 0%,
-    rgba(14,14,14,0.25) 35%,
-    rgba(14,14,14,0.75) 72%,
-    rgba(14,14,14,1) 100%
-  );
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: calc(100vh - 76px);
+  background: var(--bg);
 }
 
 .hero-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 60px 6vw 64px;
+  background: var(--bg);
+}
+
+.hero-image-col {
   position: relative;
-  z-index: 2;
+  overflow: hidden;
+  background: var(--surface);
+}
+
+.hero-screenshot {
+  display: block;
   width: 100%;
-  padding: 0 6vw 64px;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+
+/* No image: single column */
+.project-hero.no-image {
+  grid-template-columns: 1fr;
+  min-height: 0;
 }
 
 .hero-meta-row {
@@ -2100,16 +2095,7 @@ a { color: inherit; text-decoration: none; }
   gap: 20px;
 }
 
-/* No featured image fallback */
-.project-hero.no-image {
-  height: auto;
-  min-height: 0;
-  padding-top: 60px;
-  background: var(--bg);
-}
-.project-hero.no-image .hero-bg { display: none; }
-.project-hero.no-image .hero-content { padding-bottom: 60px; }
-.project-hero.no-image .hero-title { color: var(--text); }
+.project-hero.no-image .hero-content { padding-top: 60px; }
 
 /* ─── Project meta strip ───────────────────────────────────── */
 .project-meta-strip {
@@ -2475,7 +2461,9 @@ a { color: inherit; text-decoration: none; }
 
 /* ─── Responsive ───────────────────────────────────────────── */
 @media (max-width: 768px) {
-  .hero-content { padding: 0 5vw 48px; }
+  .project-hero { grid-template-columns: 1fr; }
+  .hero-image-col { height: 50vw; min-height: 240px; }
+  .hero-content { padding: 40px 5vw 48px; }
   .project-content .wp-block-paragraph,
   .project-content .wp-block-heading,
   .project-content .wp-block-list,
