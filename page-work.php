@@ -56,7 +56,7 @@ endif;
 
 <style>
 /* ─── Reset / Base ─────────────────────────────────────────── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; cursor: none; }
 
 :root {
   --bg:        #0e0e0e;

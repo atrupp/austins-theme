@@ -1523,7 +1523,7 @@ body::after,
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2rem 3rem;
+  padding: 2rem 3rem 2rem 160px;
   border-bottom: 1px solid rgba(0,0,0,0.1);
   font-family: 'DM Mono', monospace;
   font-size: 11px;
@@ -1782,7 +1782,8 @@ body::after,
 
 @media (max-width: 900px) {
   .single-content-wrap { padding: 3rem 1.5rem; }
-  .single-topbar, .single-header, .single-footer { padding-left: 1.5rem; padding-right: 1.5rem; }
+  .single-topbar, .blog-topbar { padding-left: 80px; padding-right: 1.5rem; }
+  .single-header, .single-footer { padding-left: 1.5rem; padding-right: 1.5rem; }
 }
 
 
