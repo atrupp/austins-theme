@@ -41,8 +41,8 @@
       <div class="model-scanlines"></div>
 
       <div class="model-mode-toggle">
-        <button class="model-mode-btn" data-mode="wire">Wire</button>
-        <button class="model-mode-btn active" data-mode="solid">Solid</button>
+        <button class="model-mode-btn active" data-mode="wire">Wire</button>
+        <button class="model-mode-btn" data-mode="solid">Solid</button>
       </div>
       <div id="model-loading">
         <div class="model-load-ring"></div>
@@ -97,7 +97,7 @@
 }
 
 .model-mode-toggle {
-  position: absolute; bottom: -44px; left: 50%; transform: translateX(-50%);
+  position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
   z-index: 10; display: flex; border: 1px solid rgba(0,212,255,0.25);
   border-radius: 100px; overflow: hidden;
   backdrop-filter: blur(10px); background: rgba(10,10,10,0.6);
@@ -338,7 +338,7 @@ document.querySelectorAll('[data-count]').forEach(el => {
       const scale  = 2.2 / Math.max(size.x, size.y, size.z);
       modelGroup.position.sub(center.multiplyScalar(scale));
       modelGroup.scale.setScalar(scale);
-      applyMode('solid');
+      applyMode('wire');
       scene.add(modelGroup);
       loading.classList.add('hidden');
       resize();
