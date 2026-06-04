@@ -10,8 +10,8 @@
  *   - project_url   (external live URL, falls back to the page permalink)
  */
 
-<?php $GLOBALS['site_back_btn'] = '<a href="' . esc_url( home_url('/') ) . '" class="site-back-btn">← Home</a>'; ?>
-<?php get_header(); ?>
+$GLOBALS['site_back_btn'] = '<a href="' . esc_url( home_url('/') ) . '" class="site-back-btn">← Home</a>';
+get_header(); ?>
 
 <?php
 $projects = new WP_Query([
