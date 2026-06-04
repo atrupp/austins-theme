@@ -1183,6 +1183,7 @@ body {
   cursor: pointer;
   text-decoration: none;
   display: inline-block;
+  align-self: flex-start;
   transition: background 0.2s, letter-spacing 0.2s;
 }
 

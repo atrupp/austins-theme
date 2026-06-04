@@ -83,6 +83,10 @@
   width: 1000px;
   height: 1000px;
   z-index: 1;
+  pointer-events: none;
+}
+.model-mode-toggle {
+  pointer-events: auto;
 }
 #model-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; border-radius: 50%; }
 .model-scanlines {
