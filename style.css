@@ -1993,7 +1993,7 @@ a { color: inherit; text-decoration: none; }
 .project-hero {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  min-height: calc(100vh - 76px);
+  align-items: start;
   background: var(--bg);
 }
 
@@ -2006,17 +2006,13 @@ a { color: inherit; text-decoration: none; }
 }
 
 .hero-image-col {
-  position: relative;
-  overflow: hidden;
   background: var(--surface);
 }
 
 .hero-screenshot {
   display: block;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top center;
+  height: auto;
 }
 
 /* No image: single column */
