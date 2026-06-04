@@ -14,11 +14,13 @@
 
   <div class="hero-main">
     <div class="hero-logo-seal reveal" style="transition-delay:0s">
-      <div class="tron-scanlines" aria-hidden="true"></div>
-      <div class="tron-sweep" aria-hidden="true"></div>
-      <div class="tron-trail" style="--trail-y:26%; --trail-speed:1.9s; --trail-delay:0s" aria-hidden="true"></div>
-      <div class="tron-trail" style="--trail-y:52%; --trail-speed:2.6s; --trail-delay:0.85s" aria-hidden="true"></div>
-      <div class="tron-trail" style="--trail-y:74%; --trail-speed:1.55s; --trail-delay:1.65s" aria-hidden="true"></div>
+      <div class="tron-effects-clip" aria-hidden="true">
+        <div class="tron-scanlines"></div>
+        <div class="tron-sweep"></div>
+        <div class="tron-trail" style="--trail-y:26%; --trail-speed:1.9s; --trail-delay:0s"></div>
+        <div class="tron-trail" style="--trail-y:52%; --trail-speed:2.6s; --trail-delay:0.85s"></div>
+        <div class="tron-trail" style="--trail-y:74%; --trail-speed:1.55s; --trail-delay:1.65s"></div>
+      </div>
       <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
         <img
           src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/logo.png"
