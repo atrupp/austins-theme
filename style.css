@@ -2777,9 +2777,9 @@ a { color: inherit; text-decoration: none; }
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 16px 22px;
+  align-self: flex-start;
+  padding: 20px 28px;
   margin-bottom: 2.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.15);
   position: relative;
   overflow: hidden;
   animation: tronGlow 3s ease-in-out infinite;
@@ -2821,7 +2821,7 @@ a { color: inherit; text-decoration: none; }
 /* Logo glow breathes in sync with the seal */
 .hero-logo-img {
   display: block;
-  height: 56px;
+  height: 140px;
   width: auto;
   animation: logoGlow 3s ease-in-out infinite;
 }
@@ -2912,7 +2912,7 @@ a { color: inherit; text-decoration: none; }
 }
 
 @media (max-width: 768px) {
-  .hero-logo-img { height: 44px; }
+  .hero-logo-img { height: 80px; }
 }
 
 /* ── SITE LOGO ── */
