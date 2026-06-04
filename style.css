@@ -962,7 +962,7 @@ textarea {
 body {
   background: var(--paper);
   color: var(--ink);
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 /* ── CURSOR ── */
@@ -1521,30 +1521,15 @@ body::after,
 .single-topbar,
 .blog-topbar {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
-  padding: 2rem 3rem 2rem 160px;
+  padding: 2rem 3rem;
   border-bottom: 1px solid rgba(0,0,0,0.1);
   font-family: 'DM Mono', monospace;
   font-size: 11px;
   letter-spacing: 0.2em;
   color: var(--mid);
 }
-
-.single-topbar a,
-.blog-topbar a {
-  color: var(--ink);
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  transition: color 0.2s, gap 0.2s;
-}
-
-.single-topbar a:hover,
-.blog-topbar a:hover { color: var(--accent); gap: 1rem; }
-.single-topbar a::before,
-.blog-topbar a::before { content: '←'; }
 
 /* ── POST HEADER ── */
 .single-header {
@@ -1782,7 +1767,7 @@ body::after,
 
 @media (max-width: 900px) {
   .single-content-wrap { padding: 3rem 1.5rem; }
-  .single-topbar, .blog-topbar { padding-left: 80px; padding-right: 1.5rem; }
+  .single-topbar, .blog-topbar { padding: 1.5rem; }
   .single-header, .single-footer { padding-left: 1.5rem; padding-right: 1.5rem; }
 }
 
@@ -1998,33 +1983,11 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-body);
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 a { color: inherit; text-decoration: none; }
 
-/* ─── Back nav ─────────────────────────────────────────────── */
-.project-back {
-  position: fixed;
-  top: 28px;
-  left: 160px;
-  z-index: 100;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.7rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--muted);
-  border: 1px solid var(--border);
-  padding: 8px 18px;
-  border-radius: 100px;
-  backdrop-filter: blur(12px);
-  background: rgba(14,14,14,0.6);
-  transition: color 0.2s, border-color 0.2s;
-}
-.project-back:hover { color: var(--accent); border-color: var(--accent); }
-.project-back span { font-size: 0.9rem; }
 
 /* ─── Hero ─────────────────────────────────────────────────── */
 .project-hero {
@@ -2512,7 +2475,6 @@ a { color: inherit; text-decoration: none; }
 
 /* ─── Responsive ───────────────────────────────────────────── */
 @media (max-width: 768px) {
-  .project-back { left: 20px; top: 20px; }
   .hero-content { padding: 0 5vw 48px; }
   .project-content .wp-block-paragraph,
   .project-content .wp-block-heading,
@@ -2534,28 +2496,6 @@ a { color: inherit; text-decoration: none; }
 
 
 a { color: inherit; text-decoration: none; }
-
-/* ── Back button ── */
-.photo-back {
-  position: fixed;
-  top: 28px;
-  left: 160px;
-  z-index: 100;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.7rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--muted);
-  border: 1px solid var(--border);
-  padding: 8px 18px;
-  border-radius: 100px;
-  backdrop-filter: blur(12px);
-  background: rgba(14,14,14,0.7);
-  transition: color 0.2s, border-color 0.2s;
-}
-.photo-back:hover { color: var(--accent); border-color: var(--accent); }
 
 /* ── Page header ── */
 .photo-header {
@@ -2767,7 +2707,6 @@ a { color: inherit; text-decoration: none; }
 
 /* ── Responsive ── */
 @media (max-width: 768px) {
-  .photo-back { left: 20px; top: 20px; }
   .photo-header { flex-direction: column; gap: 24px; align-items: flex-start; }
   .photo-header-right { text-align: left; }
   .photo-footer-cta { grid-template-columns: 1fr; }
@@ -2921,22 +2860,20 @@ Vertical sweep — bright horizontal bar scrolls top to bottom */
   .hero-logo-img { height: 80px; }
 }
 
-/* ── SITE LOGO ── */
+/* ── SITE HEADER + LOGO ── */
 .site-header {
-  position: fixed;
+  position: sticky;
   top: 0;
-  left: 0;
   z-index: 500;
-  pointer-events: none;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 18px 32px;
 }
 
 .site-logo {
   display: block;
-  position: fixed;
-  top: 28px;
-  left: 32px;
-  z-index: 500;
-  pointer-events: all;
+  flex-shrink: 0;
   transition: opacity 0.2s ease;
 }
 
@@ -2949,7 +2886,35 @@ Vertical sweep — bright horizontal bar scrolls top to bottom */
   max-width: 160px;
 }
 
+/* Back button in header — shared pill style */
+.site-back-btn,
+.project-back,
+.photo-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(232, 228, 220, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 8px 18px;
+  border-radius: 100px;
+  backdrop-filter: blur(12px);
+  background: rgba(14, 14, 14, 0.65);
+  text-decoration: none;
+  transition: color 0.2s, border-color 0.2s;
+}
+.site-back-btn:hover,
+.project-back:hover,
+.photo-back:hover {
+  color: rgba(232, 228, 220, 0.95);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+.project-back span { font-size: 0.9rem; }
+
 @media (max-width: 768px) {
-  .site-logo { top: 20px; left: 20px; }
+  .site-header { padding: 14px 20px; }
   .site-logo-img { height: 32px; }
 }

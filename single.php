@@ -1,12 +1,9 @@
+<?php $GLOBALS['site_back_btn'] = '<a href="' . esc_url( get_permalink( get_option('page_for_posts') ) ) . '" class="site-back-btn">← Blog</a>'; ?>
 <?php get_header(); ?>
-
-
-
 
 <div class="single-wrap">
 
   <div class="single-topbar">
-    <a href="<?php echo esc_url( get_permalink( get_option('page_for_posts') ) ); ?>">BLOG</a>
     <span>AUSTIN RUPP</span>
   </div>
 

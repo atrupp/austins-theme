@@ -10,7 +10,8 @@
  *   - project_url   (external live URL, falls back to the page permalink)
  */
 
-get_header(); ?>
+<?php $GLOBALS['site_back_btn'] = '<a href="' . esc_url( home_url('/') ) . '" class="site-back-btn">← Home</a>'; ?>
+<?php get_header(); ?>
 
 <?php
 $projects = new WP_Query([
@@ -56,7 +57,7 @@ endif;
 
 <style>
 /* ─── Reset / Base ─────────────────────────────────────────── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; cursor: none; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
   --bg:        #0e0e0e;
@@ -77,8 +78,7 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-body);
-  cursor: none;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 a { color: inherit; text-decoration: none; }
@@ -88,19 +88,23 @@ a { color: inherit; text-decoration: none; }
   position: fixed;
   top: 0; left: 0;
   width: 12px; height: 12px;
-  background: transparent;
-  border: 1.5px solid rgba(255, 255, 255, 0.85);
+  background: #00d4ff;
+  border: none;
   border-radius: 50%;
   pointer-events: none;
   z-index: 9999;
   transform: translate(-50%, -50%);
+  box-shadow: 0 0 8px rgba(0, 212, 255, 0.8);
   transition: width 0.2s var(--ease-out),
               height 0.2s var(--ease-out),
-              border-color 0.2s ease;
+              background 0.2s ease,
+              box-shadow 0.2s ease;
 }
 #cursor.expand {
-  width: 60px; height: 60px;
-  border-color: var(--accent);
+  width: 56px; height: 56px;
+  background: transparent;
+  border: 1.5px solid #00d4ff;
+  box-shadow: 0 0 12px rgba(0, 212, 255, 0.5);
 }
 #cursor-label {
   position: fixed;
@@ -502,10 +506,6 @@ a { color: inherit; text-decoration: none; }
 </div>
 
 <!-- Page -->
-<a href="<?php echo esc_url( home_url('/') ); ?>" class="project-back">
-  <span>←</span> Home
-</a>
-
 <main>
   <header class="gallery-header">
     <h1>SELECTED<br><em>Work</em></h1>

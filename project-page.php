@@ -13,6 +13,8 @@
  *   - project_client (e.g. "West Virginia University")
  */
 
+$back_url_pre = get_permalink( wp_get_post_parent_id( get_the_ID() ) ) ?: home_url('/');
+$GLOBALS['site_back_btn'] = '<a href="' . esc_url( $back_url_pre ) . '" class="site-back-btn">← All Work</a>';
 get_header();
 
 $tags    = get_post_meta( get_the_ID(), 'project_tags',   true );
@@ -37,13 +39,6 @@ $next_project = $current_pos < count($siblings) - 1 ? $siblings[ $current_pos + 
 
 
 
-<?php if ( $url || get_post_parent( get_the_ID() ) ) :
-  $back_url = get_permalink( wp_get_post_parent_id( get_the_ID() ) ) ?: home_url('/');
-?>
-<a href="<?php echo esc_url( $back_url ); ?>" class="project-back">
-  <span>←</span> All Work
-</a>
-<?php endif; ?>
 
 <!-- Hero -->
 <div class="project-hero <?php echo $hero_img ? 'has-image' : 'no-image'; ?>" id="project-hero">

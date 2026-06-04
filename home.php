@@ -1,12 +1,9 @@
+<?php $GLOBALS['site_back_btn'] = '<a href="' . esc_url( home_url('/') ) . '" class="site-back-btn">← Home</a>'; ?>
 <?php get_header(); ?>
-
-
-
 
 <div class="blog-wrap">
 
   <div class="blog-topbar">
-    <a href="<?php echo esc_url( home_url('/') ); ?>">HOME</a>
     <span>AUSTIN RUPP — BLOG</span>
   </div>
 

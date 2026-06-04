@@ -6,18 +6,18 @@
  * in WP Admin under Page Attributes > Template.
  */
 
-get_header(); ?>
+<?php $GLOBALS['site_back_btn'] = '<a href="' . esc_url( home_url('/') ) . '" class="site-back-btn">← Home</a>'; ?>
+<?php get_header(); ?>
 
 <style>
     body {
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-body);
-  overflow-x: hidden;
+  overflow-x: clip;
 }
     </style>
 
-<a href="<?php echo esc_url( home_url('/') ); ?>" class="photo-back">← Home</a>
 
 <header class="photo-header">
   <div class="photo-header-left">
