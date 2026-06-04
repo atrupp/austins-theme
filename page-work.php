@@ -88,20 +88,19 @@ a { color: inherit; text-decoration: none; }
   position: fixed;
   top: 0; left: 0;
   width: 12px; height: 12px;
-  background: var(--accent);
+  background: transparent;
+  border: 1.5px solid rgba(255, 255, 255, 0.85);
   border-radius: 50%;
   pointer-events: none;
   z-index: 9999;
   transform: translate(-50%, -50%);
   transition: width 0.2s var(--ease-out),
               height 0.2s var(--ease-out),
-              background 0.2s ease;
-  mix-blend-mode: normal;
+              border-color 0.2s ease;
 }
 #cursor.expand {
   width: 60px; height: 60px;
-  background: rgba(255,61,46,0.15);
-  border: 1.5px solid var(--accent);
+  border-color: var(--accent);
 }
 #cursor-label {
   position: fixed;
@@ -503,6 +502,10 @@ a { color: inherit; text-decoration: none; }
 </div>
 
 <!-- Page -->
+<a href="<?php echo esc_url( home_url('/') ); ?>" class="project-back">
+  <span>←</span> Home
+</a>
+
 <main>
   <header class="gallery-header">
     <h1>SELECTED<br><em>Work</em></h1>
