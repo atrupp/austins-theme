@@ -17,9 +17,11 @@
       <div class="tron-effects-clip" aria-hidden="true">
         <div class="tron-scanlines"></div>
         <div class="tron-sweep"></div>
+        <!--
         <div class="tron-trail" style="--trail-y:26%; --trail-speed:1.9s; --trail-delay:0s"></div>
         <div class="tron-trail" style="--trail-y:52%; --trail-speed:2.6s; --trail-delay:0.85s"></div>
         <div class="tron-trail" style="--trail-y:74%; --trail-speed:1.55s; --trail-delay:1.65s"></div>
+-->
       </div>
       <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
         <img
