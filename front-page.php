@@ -65,14 +65,8 @@
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="hero-bottom reveal" style="transition-delay:0.3s">
-    <div class="hero-scroll">
-      <div class="hero-scroll-line"></div>
-      SCROLL
-    </div>
-    <a href="<?php echo esc_url( get_page_link( get_page_by_path('contact') ) ); ?>" class="hero-cta">
+    <a href="<?php echo esc_url( get_page_link( get_page_by_path('contact') ) ); ?>" class="hero-cta reveal" style="transition-delay:0.3s">
       LET'S TALK →
     </a>
   </div>
