@@ -1,4 +1,4 @@
-<?php get_header(); ?>
+<?php get_header( 'front-page' ); ?>
 
 <div class="cursor" id="cursor"></div>
 

@@ -26,8 +26,16 @@
 	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'austins-theme' ); ?></a>
 
 	<header id="masthead" class="site-header">
- 
-	<!-- 
+
+		<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="site-logo" rel="home">
+			<img
+				src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/logo.png"
+				alt="<?php bloginfo( 'name' ); ?>"
+				class="site-logo-img"
+			>
+		</a>
+
+	<!--
     id="site-navigation" class="main-navigation navbar navbar-expand-lg bg-body-tertiary">
     <div class="container">
         <a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>">
