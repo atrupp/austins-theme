@@ -20,10 +20,3 @@
 <div id="page" class="site">
 <a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'austins-theme' ); ?></a>
 
-<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="site-logo" rel="home">
-	<img
-		src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/logo.png"
-		alt="<?php bloginfo( 'name' ); ?>"
-		class="site-logo-img"
-	>
-</a>

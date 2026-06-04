@@ -2772,6 +2772,149 @@ a { color: inherit; text-decoration: none; }
   .photo-footer-links { align-items: flex-start; }
 }
 
+/* ── FRONT PAGE HERO LOGO SEAL ── */
+.hero-logo-seal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 22px;
+  margin-bottom: 2.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  position: relative;
+  overflow: hidden;
+  animation: tronGlow 3s ease-in-out infinite;
+  transition: border-color 0.35s ease;
+}
+
+@keyframes tronGlow {
+  0%, 100% { box-shadow: 0 0 16px rgba(0, 212, 255, 0.07); }
+  50%       { box-shadow: 0 0 40px rgba(0, 212, 255, 0.2), 0 0 80px rgba(0, 212, 255, 0.07); }
+}
+
+/* Corner tick marks — inside bounds so overflow:hidden doesn't clip them */
+.hero-logo-seal::before,
+.hero-logo-seal::after {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-color: rgba(0, 212, 255, 0.6);
+  border-style: solid;
+  z-index: 10;
+  transition: border-color 0.35s ease;
+}
+.hero-logo-seal::before { top: 0; left: 0; border-width: 1px 0 0 1px; }
+.hero-logo-seal::after  { bottom: 0; right: 0; border-width: 0 1px 1px 0; }
+
+.hero-logo-seal:hover { border-color: rgba(0, 212, 255, 0.4); }
+.hero-logo-seal:hover::before,
+.hero-logo-seal:hover::after { border-color: rgba(0, 212, 255, 1); }
+
+.hero-logo-seal a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  position: relative;
+  z-index: 2;
+}
+
+/* Logo glow breathes in sync with the seal */
+.hero-logo-img {
+  display: block;
+  height: 56px;
+  width: auto;
+  animation: logoGlow 3s ease-in-out infinite;
+}
+
+@keyframes logoGlow {
+  0%, 100% { filter: drop-shadow(0 0 4px rgba(0, 212, 255, 0.55)); }
+  50%       { filter: drop-shadow(0 0 9px rgba(0, 212, 255, 0.95)) drop-shadow(0 0 20px rgba(0, 212, 255, 0.4)); }
+}
+
+/* CRT scanlines overlay */
+.tron-scanlines {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent 0px,
+    transparent 2px,
+    rgba(0, 212, 255, 0.028) 2px,
+    rgba(0, 212, 255, 0.028) 4px
+  );
+}
+
+/* Vertical sweep — bright horizontal bar scrolls top to bottom */
+.tron-sweep {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 2px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(0, 212, 255, 0.25) 15%,
+    rgba(0, 212, 255, 0.9) 47%,
+    rgba(255, 255, 255, 0.95) 50%,
+    rgba(0, 212, 255, 0.9) 53%,
+    rgba(0, 212, 255, 0.25) 85%,
+    transparent 100%
+  );
+  box-shadow: 0 0 6px rgba(0, 212, 255, 0.7), 0 0 18px rgba(0, 212, 255, 0.3);
+  pointer-events: none;
+  z-index: 5;
+  animation: tronSweep 4s ease-in-out infinite;
+}
+
+@keyframes tronSweep {
+  0%   { transform: translateY(-2px); opacity: 0; }
+  6%   { opacity: 1; }
+  90%  { opacity: 0.85; }
+  100% { transform: translateY(110px); opacity: 0; }
+}
+
+/* Horizontal light-bike trails cut across the seal */
+.tron-trail {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: var(--trail-y, 50%);
+  height: 1px;
+  pointer-events: none;
+  z-index: 4;
+}
+
+.tron-trail::after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 48px;
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(0, 212, 255, 0.15) 25%,
+    rgba(0, 212, 255, 0.95) 78%,
+    rgba(255, 255, 255, 0.9) 100%
+  );
+  box-shadow: 0 0 3px 1px rgba(0, 212, 255, 0.55);
+  transform: translateX(-48px);
+  animation: tronTrailBeam var(--trail-speed, 2s) linear infinite;
+  animation-delay: var(--trail-delay, 0s);
+}
+
+@keyframes tronTrailBeam {
+  from { transform: translateX(-48px); }
+  to   { transform: translateX(360px); }
+}
+
+@media (max-width: 768px) {
+  .hero-logo-img { height: 44px; }
+}
+
 /* ── SITE LOGO ── */
 .site-header {
   position: fixed;
